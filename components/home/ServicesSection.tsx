@@ -1,56 +1,54 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import {
-  ArrowRight,
-  Bed,
-  Bug,
-  Building2,
-  Hexagon,
-  PawPrint,
-  Rat,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 type Service = {
-  icon: LucideIcon;
+  image: string;
+  imageAlt: string;
   title: string;
   description: string;
 };
 
 const SERVICES: Service[] = [
   {
-    icon: Rat,
+    image: "https://images.unsplash.com/photo-1548767797-d8c844163c4c?q=80&w=400&auto=format&fit=crop",
+    imageAlt: "A brown rat in its natural habitat",
     title: "Rat Control",
     description:
       "Targeted baiting and entry-point sealing that clears an active rat problem and keeps it from coming back.",
   },
   {
-    icon: PawPrint,
+    image: "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?q=80&w=400&auto=format&fit=crop",
+    imageAlt: "A small field mouse",
     title: "Mice Removal",
     description:
       "Trap placement and gap-sealing paired with sanitation advice to fully clear a mouse infestation.",
   },
   {
-    icon: Bug,
+    image: "https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=400&auto=format&fit=crop",
+    imageAlt: "A cockroach on a textured surface",
     title: "Cockroach Treatment",
     description:
       "Gel baiting and crack-and-crevice treatment that reaches roaches where they breed, not just where you see them.",
   },
   {
-    icon: Bed,
+    image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=400&auto=format&fit=crop",
+    imageAlt: "Close up of a clean mattress",
     title: "Bed Bug Treatment",
     description:
       "Heat and residual treatments for mattresses, frames and furniture that break the breeding cycle for good.",
   },
   {
-    icon: Hexagon,
+    image: "https://images.unsplash.com/photo-1585152004491-4f12cf830a34?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2FzcCUyMG5ldCUyMHJlbW92YWx8ZW58MHx8MHx8fDA%3D",
+    imageAlt: "Close up of a wasp with yellow and black markings",
     title: "Wasp Nest Removal",
     description:
       "Safe, same-day nest removal from eaves, sheds and gardens — no ladders or guesswork required.",
   },
   {
-    icon: Building2,
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=400&auto=format&fit=crop",
+    imageAlt: "A large commercial warehouse filled with shelves and boxes",
     title: "Commercial Pest Control",
     description:
       "Scheduled visits and compliance-ready documentation for restaurants, offices and warehouses.",
@@ -132,8 +130,13 @@ export default function ServicesSection() {
                 className="absolute inset-x-0 top-0 h-1 rounded-t-lg bg-gradient-to-r from-brand-purple to-brand-red opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
 
-              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-md bg-surface-muted text-brand-purple transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-purple group-hover:text-text-inverse">
-                <service.icon className="h-7 w-7" strokeWidth={1.75} />
+              <div className="mb-5 flex h-16 w-16 overflow-hidden rounded-md bg-surface-muted transition-all duration-300 group-hover:scale-110">
+                <img
+                  src={service.image}
+                  alt={service.imageAlt}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
               </div>
 
               <h3 className="font-display text-lg font-bold text-brand-navy">
@@ -143,11 +146,6 @@ export default function ServicesSection() {
                 {service.description}
               </p>
 
-              {/*
-                Demo-only visual element: a real <button> so it can never
-                navigate or change the URL. No individual service pages
-                exist yet — this is intentionally inert.
-              */}
               <button
                 type="button"
                 aria-label={`Learn more about ${service.title} — detail page coming soon`}
