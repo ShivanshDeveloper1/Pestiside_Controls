@@ -3,21 +3,22 @@
 :root {
   color-scheme: light;
 
-  --brand-navy: #11182b;
-  --brand-navy-deep: #0b1020;
-  --brand-purple: #6741b8;
-  --brand-purple-strong: #513094;
-  --brand-red: #d93645;
-  --brand-red-hover: #bd2938;
+  /* Palette: midnight ink, electric indigo, signal rose, lilac mist */
+  --brand-navy: #0c1033;
+  --brand-navy-deep: #060821;
+  --brand-purple: #5b3df5;
+  --brand-purple-strong: #4526cf;
+  --brand-red: #e11d48;
+  --brand-red-hover: #be123c;
 
-  --text-primary: #1b2235;
-  --text-secondary: #667085;
+  --text-primary: #131737;
+  --text-secondary: #596080;
   --text-inverse: #ffffff;
-  --background: #f7f8fb;
+  --background: #f4f4fd;
   --surface: #ffffff;
-  --surface-muted: #f0f2f7;
-  --border: #e2e5ed;
-  --focus-ring: #7045c0;
+  --surface-muted: #eae9fb;
+  --border: #dddcf2;
+  --focus-ring: #5b3df5;
 
   --shape-radius-sm: 0.5rem;
   --shape-radius-md: 0.75rem;
@@ -25,9 +26,10 @@
   --shape-radius-xl: 1.375rem;
   --shape-radius-pill: 999px;
 
-  --elevation-soft: 0 4px 16px rgb(17 24 43 / 6%);
-  --elevation-card: 0 12px 32px rgb(17 24 43 / 9%);
-  --elevation-raised: 0 20px 48px rgb(17 24 43 / 12%);
+  /* Shadows are tinted with the brand indigo instead of flat grey */
+  --elevation-soft: 0 4px 16px rgb(28 20 90 / 7%);
+  --elevation-card: 0 14px 36px rgb(28 20 90 / 11%);
+  --elevation-raised: 0 24px 56px rgb(28 20 90 / 16%);
 
   --layout-container-content: 80rem;
   --layout-container-reading: 46rem;
@@ -51,8 +53,9 @@
   --color-surface-muted: var(--surface-muted);
   --color-border: var(--border);
   --color-focus-ring: var(--focus-ring);
-  --font-sans: var(--font-plus-jakarta-sans);
-  --font-display: var(--font-manrope);
+  /* Fonts: Figtree (body) + Sora (display) — load both in layout.tsx */
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
   --radius-sm: var(--shape-radius-sm);
   --radius-md: var(--shape-radius-md);
   --radius-lg: var(--shape-radius-lg);
@@ -82,10 +85,11 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--text-primary);
-  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-family: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
@@ -115,9 +119,14 @@ body {
     var(--layout-section-space);
   background:
     radial-gradient(
-      ellipse at 10% 0%,
-      color-mix(in srgb, var(--brand-purple) 8%, transparent),
-      transparent 36rem
+      ellipse at 8% 0%,
+      color-mix(in srgb, var(--brand-purple) 15%, transparent),
+      transparent 38rem
+    ),
+    radial-gradient(
+      ellipse at 100% 100%,
+      color-mix(in srgb, var(--brand-red) 7%, transparent),
+      transparent 32rem
     ),
     var(--background);
 }
@@ -159,22 +168,35 @@ body {
   flex: 0 0 auto;
   border-radius: var(--shape-radius-pill);
   background: var(--brand-red);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand-red) 18%, transparent);
 }
 
 .home-hero__title {
   max-width: 12ch;
   margin: 0;
   color: var(--brand-navy);
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(2.65rem, 11vw, 5rem);
   font-weight: 700;
-  letter-spacing: -0.065em;
+  letter-spacing: -0.055em;
   line-height: 1.04;
 }
 
+/* The one bold moment: gradient headline accent */
 .home-hero__title span {
   display: block;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+  background: linear-gradient(
+    95deg,
+    var(--brand-purple) 0%,
+    #a83bd9 52%,
+    var(--brand-red) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
   color: var(--brand-purple);
+  -webkit-text-fill-color: transparent;
 }
 
 .home-hero__description {
@@ -193,19 +215,21 @@ body {
   padding: 0.8rem 1.25rem;
   border-radius: var(--shape-radius-md);
   background: var(--brand-red);
-  box-shadow: var(--elevation-soft);
+  box-shadow: 0 10px 24px rgb(225 29 72 / 28%);
   color: var(--text-inverse);
   font-size: 0.9375rem;
   font-weight: 700;
   text-decoration: none;
   transition:
     background-color 180ms ease,
-    box-shadow 180ms ease;
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .home-hero__cta:hover {
   background: var(--brand-red-hover);
-  box-shadow: var(--elevation-card);
+  box-shadow: 0 14px 30px rgb(225 29 72 / 36%);
+  transform: translateY(-2px);
 }
 
 .home-hero__cta-icon {
@@ -243,7 +267,7 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--shape-radius-pill);
   background: var(--surface);
-  color: var(--text-primary);
+  color: var(--brand-purple-strong);
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1.4;
@@ -255,7 +279,7 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--shape-radius-xl);
   background: var(--surface);
-  box-shadow: var(--elevation-card);
+  box-shadow: var(--elevation-raised);
 }
 
 .home-hero__photo {
@@ -270,8 +294,8 @@ body {
   z-index: 1;
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--brand-navy-deep) 72%, transparent),
-    transparent 100%
+    color-mix(in srgb, var(--brand-navy-deep) 82%, transparent),
+    color-mix(in srgb, var(--brand-purple) 16%, transparent) 100%
   );
   content: "";
   inset: 0;
@@ -289,7 +313,7 @@ body {
   left: 1rem;
   max-width: 15rem;
   color: var(--text-inverse);
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
   font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.3;
@@ -312,7 +336,7 @@ body {
 .home-hero__form-title {
   margin: 0;
   color: var(--brand-navy);
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(1.35rem, 4vw, 1.7rem);
   font-weight: 700;
   letter-spacing: -0.035em;
@@ -351,23 +375,25 @@ body {
   padding: 0.75rem 0.875rem;
   border: 1px solid var(--border);
   border-radius: var(--shape-radius-md);
-  background: var(--surface);
+  background: var(--background);
   color: var(--text-primary);
   font: inherit;
   font-size: 0.875rem;
   line-height: 1.4;
   transition:
     border-color 160ms ease,
+    background-color 160ms ease,
     box-shadow 160ms ease;
 }
 
 .home-hero__field input::placeholder {
   color: var(--text-secondary);
-  opacity: 0.78;
+  opacity: 0.7;
 }
 
 .home-hero__field input:focus-visible {
   border-color: var(--focus-ring);
+  background: var(--surface);
   outline: 3px solid color-mix(in srgb, var(--focus-ring) 22%, transparent);
   outline-offset: 1px;
 }
@@ -382,16 +408,22 @@ body {
   border: 0;
   border-radius: var(--shape-radius-md);
   background: var(--brand-red);
+  box-shadow: 0 8px 20px rgb(225 29 72 / 24%);
   color: var(--text-inverse);
   cursor: pointer;
   font: inherit;
   font-size: 0.9375rem;
   font-weight: 700;
-  transition: background-color 180ms ease;
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .home-hero__submit:hover {
   background: var(--brand-red-hover);
+  box-shadow: 0 12px 26px rgb(225 29 72 / 32%);
+  transform: translateY(-1px);
 }
 
 .home-hero__disclaimer {
@@ -460,4 +492,35 @@ body {
   .home-hero__submit {
     transition: none;
   }
+
+  .home-hero__cta:hover,
+  .home-hero__submit:hover {
+    transform: none;
+  }
+}
+.bg-dot-grid {
+  background-image: radial-gradient(currentColor 1.4px, transparent 1.4px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse at top right, #000 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse at top right, #000 0%, transparent 70%);
+}
+ 
+/* Light sweep across the experience badge */
+.badge-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / 0.18) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: badge-sheen 4.5s ease-in-out 1.6s infinite;
+  pointer-events: none;
+}
+ 
+@keyframes badge-sheen {
+  0%   { transform: translateX(-120%); }
+  40%, 100% { transform: translateX(120%); }
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  .badge-sheen::after { animation: none; }
 }

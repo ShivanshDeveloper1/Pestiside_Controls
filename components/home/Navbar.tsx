@@ -121,19 +121,18 @@ export default function Navbar() {
           className="mx-auto flex h-16 max-w-content items-center justify-between px-page sm:h-[4.5rem]"
         >
           {/* Logo — swap for next/image once a logo asset exists in /public */}
-          <button
-            type="button"
-            onClick={handleNavClick}
-            aria-label="Speedy Pest Control — home"
-            className="flex items-center gap-2.5 rounded-md"
-          >
-            <span className="flex h-9 w-9 flex-none items-center justify-center rounded-md bg-brand-navy text-text-inverse">
-              <ShieldCheck className="h-5 w-5" strokeWidth={2} />
-            </span>
-            <span className="font-display text-base font-bold leading-none tracking-[-0.01em] text-brand-navy sm:text-lg">
-              Speedy<span className="text-brand-red">Pest</span>
-            </span>
-          </button>
+  <button
+  type="button"
+  onClick={handleNavClick}
+  aria-label="Speedy Pest Control — home"
+  className="flex items-center rounded-md"
+>
+  <img
+    src="/logo.jpeg"
+    alt="Speedy Pest Control"
+    className="h-10 w-auto max-w-[180px] object-contain sm:h-12"
+  />
+</button>
 
           {/* Desktop nav */}
           <ul className="hidden items-center gap-1 lg:flex">
