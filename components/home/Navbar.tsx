@@ -3,8 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
+import Link from "next/link";
 
-const NAV_ITEMS = ["Home", "About Us", "Services", "Blog", "Contact Us"] as const;
+const NAV_ITEMS = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact Us", href: "/contact" },
+] as const;
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -116,8 +123,8 @@ export default function Navbar() {
           className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
         >
           {/* Logo */}
-          <button
-            type="button"
+          <Link
+            href="/"
             onClick={handleNavClick}
             aria-label="Speedy Pest Control — home"
             className="group flex items-center rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
@@ -127,35 +134,35 @@ export default function Navbar() {
               alt="Speedy Pest Control"
               className="h-10 w-auto max-w-[180px] object-contain transition-transform duration-300 group-hover:scale-105 sm:h-12"
             />
-          </button>
+          </Link>
 
           {/* Desktop nav */}
           <ul className="hidden items-center gap-2 lg:flex">
             {NAV_ITEMS.map((item) => (
-              <li key={item}>
-                <button
-                  type="button"
+              <li key={item.href}>
+                <Link
+                  href={item.href}
                   onClick={handleNavClick}
-                  className="group relative rounded-full px-5 py-2.5 text-sm font-semibold text-slate-600 transition-colors duration-300 hover:bg-slate-50 hover:text-rose-600 dark:text-slate-300 dark:hover:bg-slate-800/50 dark:hover:text-rose-400"
+                  className="group relative block rounded-full px-5 py-2.5 text-sm font-semibold text-slate-600 transition-colors duration-300 hover:bg-slate-50 hover:text-rose-600 dark:text-slate-300 dark:hover:bg-slate-800/50 dark:hover:text-rose-400"
                 >
-                  {item}
+                  {item.label}
                   <span
                     aria-hidden
                     className="absolute inset-x-5 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-rose-500 transition-transform duration-300 ease-out group-hover:scale-x-100"
                   />
-                </button>
+                </Link>
               </li>
             ))}
           </ul>
 
           {/* Desktop CTA */}
-          <button
-            type="button"
+          <Link
+            href="/quote"
             onClick={handleNavClick}
             className="hidden shrink-0 transform rounded-full bg-rose-600 px-7 py-3 text-sm font-bold text-white shadow-md shadow-rose-500/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-rose-700 hover:shadow-lg hover:shadow-rose-500/40 lg:inline-flex lg:items-center"
           >
             Get a Free Quote
-          </button>
+          </Link>
 
           {/* Mobile menu trigger */}
           <button
@@ -193,7 +200,7 @@ export default function Navbar() {
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={shouldReduceMotion ? { opacity: 0 } : { y: "-5%", opacity: 0, scale: 0.98 }}
               transition={{ duration: shouldReduceMotion ? 0.15 : 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="flex h-full w-full flex-col bg-white px-6 pb-10 pt-6 shadow-2xl dark:bg-slate-950 sm:mx-auto sm:mt-4 sm:h-auto sm:max-w-md sm:rounded-3xl sm:border sm:border-slate-200/50 sm:dark:border-slate-800/50"
+              className="flex h-full w-full flex-col overflow-y-auto bg-white px-6 pb-10 pt-6 shadow-2xl dark:bg-slate-950 sm:mx-auto sm:mt-4 sm:h-auto sm:max-w-md sm:rounded-3xl sm:border sm:border-slate-200/50 sm:dark:border-slate-800/50"
               onClick={(event) => event.stopPropagation()}
             >
               <div className="flex items-center justify-between">
@@ -218,28 +225,28 @@ export default function Navbar() {
                 className="mt-8 flex flex-1 flex-col gap-2"
               >
                 {NAV_ITEMS.map((item) => (
-                  <motion.li key={item} variants={itemVariants}>
-                    <button
-                      type="button"
+                  <motion.li key={item.href} variants={itemVariants}>
+                    <Link
+                      href={item.href}
                       onClick={handleNavClick}
                       className="group flex w-full items-center justify-between rounded-xl px-4 py-4 text-left text-xl font-bold text-slate-800 transition-all duration-200 hover:bg-slate-50 hover:text-rose-600 dark:text-slate-100 dark:hover:bg-slate-900 dark:hover:text-rose-400"
                     >
-                      {item}
+                      {item.label}
                       <ArrowRight className="h-5 w-5 opacity-0 transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100" strokeWidth={2.5} />
-                    </button>
+                    </Link>
                   </motion.li>
                 ))}
               </motion.ul>
 
               <div className="mt-8">
-                <button
-                  type="button"
+                <Link
+                  href="/quote"
                   onClick={handleNavClick}
                   className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-rose-600 px-6 py-4 text-lg font-bold text-white shadow-lg shadow-rose-500/25 transition-all duration-300 hover:bg-rose-700 hover:shadow-xl hover:shadow-rose-500/40 active:scale-[0.98]"
                 >
                   Get a Free Quote
                   <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.5} />
-                </button>
+                </Link>
 
                 <p className="mt-6 text-center text-sm font-medium text-slate-500 dark:text-slate-400">
                   Homes, restaurants, offices &amp; warehouses — <br className="hidden sm:block" />

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Figtree, Manrope, Plus_Jakarta_Sans, Sora } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/home/Navbar";
+import Footer from "@/components/layout/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -32,8 +34,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${plusJakartaSans.variable} ${manrope.variable} h-full antialiased ${sora.variable} ${figtree.variable}`}
     >
-      <Navbar />
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <WhatsAppButton />
+
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

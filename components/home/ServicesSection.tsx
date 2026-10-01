@@ -37,225 +37,7 @@ import {
   Phone,
   FileText
 } from "lucide-react";
-
-const SERVICES = [
-  {
-    id: "rat-control",
-    title: "Rat Control & Removal",
-    category: "Rodents",
-    badge: "24/7 Emergency",
-    badgeColor: "bg-rose-500/20 text-rose-300 border-rose-500/30",
-    image:
-      "https://images.unsplash.com/photo-1548767797-d8c844163c4c?q=80&w=800&auto=format&fit=crop",
-    imageAlt: "Brown rat inspection and wildlife management target",
-    shortDesc:
-      "Targeted baiting and entry-point sealing that clears active rat infestations and prevents re-entry permanently.",
-    fullDesc:
-      "Rats cause structural damage and pose serious health hazards through gnawing and contamination. Our dual-phase program uses strategic smart-baiting coupled with heavy-duty structural proofing (steel mesh & industrial sealant) to guarantee total eradication.",
-    priceRange: "$180 - $350",
-    avgPrice: 245,
-    responseTime: "< 2 Hours",
-    ecoRating: "92% Eco-Balanced",
-    warranty: "6-Month Money Back",
-    isEmergency: true,
-    tags: ["Rodent Proofing", "Bait Stations", "Sanitation Audit"],
-    steps: [
-      { title: "Inspection & Thermal Audit", desc: "Locate nesting zones and entry cracks down to 0.5 inches." },
-      { title: "Targeted Eradication", desc: "Deploy tamper-proof bait matrices and smart sensors." },
-      { title: "Entry-Point Proofing", desc: "Seal pipe gaps, vents, and rooflines with chew-proof mesh." },
-      { title: "Sanitation & Prevention", desc: "Sanitize affected areas and issue a 6-month clear warranty." }
-    ]
-  },
-  {
-    id: "mice-removal",
-    title: "Precision Mice Control",
-    category: "Rodents",
-    badge: "Family & Pet Safe",
-    badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
-    image:
-      "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?q=80&w=800&auto=format&fit=crop",
-    imageAlt: "Field mouse trapped safely in eco-friendly environment",
-    shortDesc:
-      "Trap placement and gap-sealing paired with hygiene guidance to clear house and field mice quickly.",
-    fullDesc:
-      "Mice breed exponentially and contaminate food surfaces. We deploy non-toxic, eco-friendly trapping technology paired with precision copper mesh sealing to eliminate nesting grounds without toxic airborne fumes.",
-    priceRange: "$150 - $280",
-    avgPrice: 195,
-    responseTime: "Same-Day",
-    ecoRating: "98% Botanical & Safe",
-    warranty: "90-Day Guarantee",
-    isEmergency: false,
-    tags: ["Snap Traps", "Copper Mesh", "Attic Sealing"],
-    steps: [
-      { title: "Pheromone Mapping", desc: "Identify high-traffic travel routes and wall void harborages." },
-      { title: "Snap & Live Capture", desc: "Position concealed, child-safe multi-catch stations." },
-      { title: "Exclusion Sealing", desc: "Block baseboards, kickplates, and exterior utility holes." },
-      { title: "Final Clearing Audit", desc: "Verify 100% elimination with flour tracking tests." }
-    ]
-  },
-  {
-    id: "cockroach-treatment",
-    title: "Cockroach Colony Treatment",
-    category: "Insects",
-    badge: "Targeted Gel Matrix",
-    badgeColor: "bg-indigo-500/20 text-indigo-300 border-indigo-500/30",
-    image:
-      "https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=800&auto=format&fit=crop",
-    imageAlt: "Close up of insect treatment application surface",
-    shortDesc:
-      "Advanced gel baiting and crack-and-crevice treatments reaching roaches deep where they breed.",
-    fullDesc:
-      "German and American cockroaches carry pathogens and thrive in hard-to-reach crevices. Our deep gel baiting incorporates Insect Growth Regulators (IGRs) that destroy eggs and stop breeding cycles permanently.",
-    priceRange: "$160 - $320",
-    avgPrice: 220,
-    responseTime: "< 4 Hours",
-    ecoRating: "88% Targeted Micro-Gel",
-    warranty: "100-Day Clean Guarantee",
-    isEmergency: true,
-    tags: ["IGR Gel Bait", "Crack & Crevice", "Kitchen Audit"],
-    steps: [
-      { title: "Species Identification", desc: "Distinguish German, Oriental, or American species for precise baiting." },
-      { title: "Micro-Gel Placement", desc: "Apply non-odorous bait dot matrix in hinges, motors, and voids." },
-      { title: "Growth Regulator Fog", desc: "Disrupt juvenile molting to sterilize surviving colonies." },
-      { title: "Follow-Up Monitoring", desc: "Install adhesive monitor traps to confirm zero activity." }
-    ]
-  },
-  {
-    id: "bed-bug-heat",
-    title: "Bed Bug Thermal Eradication",
-    category: "Nuisance & Specialty",
-    badge: "1-Day Heat Solution",
-    badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
-    image:
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=800&auto=format&fit=crop",
-    imageAlt: "Clean mattress and sanitized bedroom interior",
-    shortDesc:
-      "Thermal heat and residual spray treatments for mattresses, frames, and furniture breaking all lifecycle stages.",
-    fullDesc:
-      "Bed bugs are immune to standard over-the-counter sprays. Our eco-thermal heating technology penetrates walls, mattresses, and floorboards up to 135°F to eliminate bugs and hidden eggs in a single 6-hour visit.",
-    priceRange: "$290 - $650",
-    avgPrice: 450,
-    responseTime: "24-Hour Dispatch",
-    ecoRating: "100% Chemical-Free Heat",
-    warranty: "1-Year Complete Guarantee",
-    isEmergency: true,
-    tags: ["Heat Treatment", "Mattress Encase", "Egg Destruction"],
-    steps: [
-      { title: "Canine/K9 Inspection", desc: "Pinpoint hidden harborage pockets in headboards and baseboards." },
-      { title: "Thermal Convection", desc: "Heat ambient space to lethal temperatures (130°F-140°F) for 4+ hours." },
-      { title: "Residual Perimeter Shield", desc: "Apply invisible desiccant dust inside electric outlets and trim." },
-      { title: "Mattress Protection", desc: "Install certified bite-proof encasements on box springs." }
-    ]
-  },
-  {
-    id: "wasp-removal",
-    title: "Emergency Wasp & Nest Removal",
-    category: "Insects",
-    badge: "Same-Day Emergency",
-    badgeColor: "bg-rose-500/20 text-rose-300 border-rose-500/30",
-    image:
-      "https://images.unsplash.com/photo-1585152004491-4f12cf830a34?w=800&auto=format&fit=crop&q=80",
-    imageAlt: "Wasp close up near structural eave",
-    shortDesc:
-      "Safe, fast nest removal from eaves, attics, and gardens with zero ladder risks for property owners.",
-    fullDesc:
-      "Aggressive wasps, hornets, and yellowjackets endanger families and guests. Our certified technicians equip high-reach telescoping dusters to neutralize nests instantly and spray anti-nesting repellents on soffits.",
-    priceRange: "$120 - $240",
-    avgPrice: 175,
-    responseTime: "< 1 Hour Priority",
-    ecoRating: "85% Instant Knockdown",
-    warranty: "Season-Long Protection",
-    isEmergency: true,
-    tags: ["High-Reach Rig", "Hornet Neutralizer", "Eave Spray"],
-    steps: [
-      { title: "Perimeter Drone Scan", desc: "Identify active entry holes in high roof gables and wall cavities." },
-      { title: "Fast-Knockdown Treatment", desc: "Inject lethal dust directly into nest core structure." },
-      { title: "Complete Nest Extraction", desc: "Safely remove and bag nest casing from eaves or trees." },
-      { title: "Anti-Rebuild Pheromone Shield", desc: "Treat eaves with repelling oils to stop future nest building." }
-    ]
-  },
-  {
-    id: "commercial-control",
-    title: "Commercial & Business Defense",
-    category: "Commercial",
-    badge: "Regulatory Compliant",
-    badgeColor: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
-    image:
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop",
-    imageAlt: "Large commercial warehouse with pristine storage shelving",
-    shortDesc:
-      "Scheduled maintenance, audit documentation, and compliance support for restaurants, offices, and logistics.",
-    fullDesc:
-      "Protect your brand, pass health department audits with flying colors, and ensure zero customer complaints. We provide discreet off-hours servicing, barcode tracking, and complete digital reporting.",
-    priceRange: "Custom / Monthly",
-    avgPrice: 350,
-    responseTime: "Dedicated Account Lead",
-    ecoRating: "100% Audit Ready",
-    warranty: "Zero-Infestation SLA",
-    isEmergency: false,
-    tags: ["Audit Documentation", "Discreet Service", "Barcode Scanning"],
-    steps: [
-      { title: "Risk & Vulnerability Mapping", desc: "Conduct HACCP/AIB standard audit of loading docks and kitchen bays." },
-      { title: "Discreet Implementation", desc: "Install hidden interior stations and fly control units after hours." },
-      { title: "Digital Barcode Logging", desc: "Track station activity with real-time cloud mobile app reports." },
-      { title: "Health Inspector Sign-Off", desc: "Furnish quarterly compliance binders for regulatory inspections." }
-    ]
-  },
-  {
-    id: "ant-extermination",
-    title: "Ant Colony Extermination",
-    category: "Insects",
-    badge: "Queen Destruction",
-    badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
-    image:
-      "https://images.unsplash.com/photo-1589656966895-2f33e7653819?q=80&w=800&auto=format&fit=crop",
-    imageAlt: "Macro close up of ants on trail",
-    shortDesc:
-      "Eradicate persistent carpenter, sugar, and pavement ant trails by targeting the subterranean queen.",
-    fullDesc:
-      "Surface sprays only kill worker ants while the queen lays thousands more inside walls. Our protein/sugar dual baiting system is carried directly into the colony nest, destroying the queen and entire colony inside 48 hours.",
-    priceRange: "$140 - $260",
-    avgPrice: 185,
-    responseTime: "Same-Day",
-    ecoRating: "95% Non-Repellent",
-    warranty: "6-Month Defense",
-    isEmergency: false,
-    tags: ["Carpenter Ant Barrier", "Queen Baiting", "Lawn Spray"],
-    steps: [
-      { title: "Pheromone Trail Tracking", desc: "Follow active worker trails back to subterranean or wall-void nests." },
-      { title: "Delayed-Action Baiting", desc: "Deploy protein/sugar baits that workers carry to the queen." },
-      { title: "Perimeter Granular Barrier", desc: "Apply weather-resistant granules around foundation perimeter." },
-      { title: "Wood Structure Check", desc: "Audit structural beams for carpenter ant tunneling damage." }
-    ]
-  },
-  {
-    id: "termite-protection",
-    title: "Termite & Timber Protection",
-    category: "Nuisance & Specialty",
-    badge: "Structural Warranty",
-    badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/30",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
-    imageAlt: "Wooden building framework structure",
-    shortDesc:
-      "Radar thermal scanning, liquid soil barriers, and subterranean baiting to safeguard property foundations.",
-    fullDesc:
-      "Subterranean termites cause billions in property damage silently. We use Termatrac radar and acoustic sensors to detect activity inside drywalls, then apply liquid Termidor barriers and station monitors.",
-    priceRange: "$350 - $1,200",
-    avgPrice: 650,
-    responseTime: "Priority Scheduling",
-    ecoRating: "90% Low Volume Soil Barrier",
-    warranty: "5-Year Renewable Warranty",
-    isEmergency: false,
-    tags: ["Radar Detection", "Liquid Barrier", "In-Ground Stations"],
-    steps: [
-      { title: "Acoustic & Thermal Scanning", desc: "Locate active movement behind walls without drilling holes." },
-      { title: "Perimeter Trench & Injection", desc: "Inject non-repellent termiticide into soil around foundations." },
-      { title: "In-Ground Smart Stations", desc: "Place monitored bait tubes every 10 feet around property line." },
-      { title: "Annual Inspection Shield", desc: "Conduct annual renewal checks backed by $250k repair guarantee." }
-    ]
-  }
-];
+import { SERVICES } from "@/components/services/serviceData";
 
 const CATEGORIES = ["All", "Rodents", "Insects", "Nuisance & Specialty", "Commercial"];
 
@@ -377,28 +159,36 @@ function ServiceCard({ service, onSelect, onQuote }) {
 
 function ServiceDetailModal({ service, onClose, onOpenQuote }) {
   const [activeTab, setActiveTab] = useState("overview");
+  const reduceMotion = useReducedMotion();
 
   if (!service) return null;
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={reduceMotion ? { opacity: 1 } : { opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={reduceMotion ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: reduceMotion ? 0 : 0.2 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 backdrop-blur-md bg-slate-950/80"
       onClick={onClose}
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        id="service-details-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="service-details-title"
+        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        exit={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.95, y: 20 }}
+        transition={reduceMotion ? { duration: 0 } : { type: "spring", damping: 25, stiffness: 300 }}
         onClick={(e) => e.stopPropagation()}
         className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl text-slate-100 sm:p-8"
       >
         {/* Close Button */}
         <button
+          type="button"
           onClick={onClose}
+          aria-label="Close service details"
           className="absolute top-5 right-5 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/80 text-slate-400 hover:bg-slate-700 hover:text-white transition-colors"
         >
           <X className="h-5 w-5" />
@@ -418,7 +208,7 @@ function ServiceDetailModal({ service, onClose, onOpenQuote }) {
               <span className={`inline-block rounded-full border px-3 py-0.5 text-xs font-semibold backdrop-blur-md ${service.badgeColor} mb-2`}>
                 {service.badge}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              <h2 id="service-details-title" className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
                 {service.title}
               </h2>
             </div>
@@ -430,7 +220,40 @@ function ServiceDetailModal({ service, onClose, onOpenQuote }) {
         </div>
 
         {/* Modal Navigation Tabs */}
-        <div className="mb-6 flex border-b border-slate-800">
+        <div
+          role="tablist"
+          aria-label="Service details"
+          aria-orientation="horizontal"
+          onKeyDown={(event) => {
+            const tabs = Array.from(
+              event.currentTarget.querySelectorAll<HTMLButtonElement>(
+                '[role="tab"]',
+              ),
+            );
+            const activeIndex = tabs.findIndex(
+              (tab) => tab === document.activeElement,
+            );
+            let nextIndex = activeIndex;
+
+            if (event.key === "ArrowRight") {
+              nextIndex = (activeIndex + 1) % tabs.length;
+            } else if (event.key === "ArrowLeft") {
+              nextIndex = (activeIndex - 1 + tabs.length) % tabs.length;
+            } else if (event.key === "Home") {
+              nextIndex = 0;
+            } else if (event.key === "End") {
+              nextIndex = tabs.length - 1;
+            } else {
+              return;
+            }
+
+            event.preventDefault();
+            const nextTab = tabs[nextIndex];
+            nextTab.focus();
+            setActiveTab(nextTab.dataset.tabId ?? "overview");
+          }}
+          className="mb-6 grid grid-cols-3 border-b border-slate-800"
+        >
           {[
             { id: "overview", label: "Overview & Safety", icon: Info },
             { id: "process", label: "4-Step Treatment Plan", icon: Layers },
@@ -440,8 +263,15 @@ function ServiceDetailModal({ service, onClose, onOpenQuote }) {
             return (
               <button
                 key={tab.id}
+                id={`service-tab-${tab.id}`}
+                data-tab-id={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === tab.id}
+                aria-controls="service-tab-panel"
+                tabIndex={activeTab === tab.id ? 0 : -1}
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative flex items-center gap-2 px-4 py-3 text-sm font-semibold transition-colors ${
+                className={`relative flex min-w-0 flex-col items-center justify-center gap-1.5 px-1 py-3 text-center text-xs font-semibold transition-colors sm:flex-row sm:gap-2 sm:px-4 sm:text-sm ${
                   activeTab === tab.id
                     ? "text-indigo-400"
                     : "text-slate-400 hover:text-slate-200"
@@ -461,11 +291,17 @@ function ServiceDetailModal({ service, onClose, onOpenQuote }) {
         </div>
 
         {/* Tab Content Panels */}
-        <div className="space-y-6">
+        <div
+          id="service-tab-panel"
+          role="tabpanel"
+          aria-labelledby={`service-tab-${activeTab}`}
+          className="space-y-6"
+        >
           {activeTab === "overview" && (
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: reduceMotion ? 0 : 0.2 }}
               className="space-y-4"
             >
               <p className="text-base leading-relaxed text-slate-300">
@@ -508,8 +344,9 @@ function ServiceDetailModal({ service, onClose, onOpenQuote }) {
 
           {activeTab === "process" && (
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: reduceMotion ? 0 : 0.2 }}
               className="space-y-4"
             >
               <div className="relative border-l-2 border-indigo-500/30 ml-4 space-y-6 py-2">
@@ -528,8 +365,9 @@ function ServiceDetailModal({ service, onClose, onOpenQuote }) {
 
           {activeTab === "guarantee" && (
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: reduceMotion ? 0 : 0.2 }}
               className="space-y-4"
             >
               <div className="rounded-2xl bg-gradient-to-br from-indigo-950/40 to-slate-800/40 border border-indigo-500/20 p-5">
@@ -601,6 +439,7 @@ function ServiceDetailModal({ service, onClose, onOpenQuote }) {
 }
 
 function QuickQuoteModal({ service, onClose, onSubmitted }) {
+  const reduceMotion = useReducedMotion();
   const [propertyType, setPropertyType] = useState("residential");
   const [sizeSqFt, setSizeSqFt] = useState(1800);
   const [urgency, setUrgency] = useState("standard");
@@ -629,21 +468,29 @@ function QuickQuoteModal({ service, onClose, onSubmitted }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={reduceMotion ? { opacity: 1 } : { opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      exit={reduceMotion ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: reduceMotion ? 0 : 0.2 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md bg-slate-950/80"
       onClick={onClose}
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        id="quick-quote-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="quick-quote-title"
+        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        exit={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.95, y: 20 }}
+        transition={reduceMotion ? { duration: 0 } : undefined}
         onClick={(e) => e.stopPropagation()}
         className="relative max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl text-slate-100 sm:p-8"
       >
         <button
+          type="button"
           onClick={onClose}
+          aria-label="Close quote estimator"
           className="absolute top-5 right-5 flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-400 hover:text-white"
         >
           <X className="h-5 w-5" />
@@ -656,7 +503,7 @@ function QuickQuoteModal({ service, onClose, onSubmitted }) {
                 <Zap className="h-3.5 w-3.5" />
                 Live Instant Estimator
               </span>
-              <h3 className="mt-2 text-2xl font-bold text-white">
+              <h3 id="quick-quote-title" className="mt-2 text-2xl font-bold text-white">
                 Instant Estimate: {service ? service.title : "Custom Treatment"}
               </h3>
               <p className="text-xs text-slate-400 mt-1">Adjust parameters below for an immediate cost estimate.</p>
@@ -800,7 +647,9 @@ function QuickQuoteModal({ service, onClose, onSubmitted }) {
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
               <CheckCircle2 className="h-10 w-10" />
             </div>
-            <h3 className="text-2xl font-bold text-white">Quote Locked In!</h3>
+            <h3 id="quick-quote-title" className="text-2xl font-bold text-white">
+              Quote Locked In!
+            </h3>
             <p className="text-sm text-slate-300 max-w-sm mx-auto">
               Our dispatch team has received your calculation of <strong className="text-emerald-400">${estimatedTotal}</strong>. We will call <span className="text-indigo-300 font-semibold">{phone}</span> within 15 minutes to confirm.
             </p>
