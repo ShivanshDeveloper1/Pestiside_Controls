@@ -48,13 +48,7 @@ export const SERVICE_CATALOG = [
     shortDesc:
       "Eradicate persistent carpenter, sugar, and pavement ant trails by targeting the subterranean queen.",
   },
-  {
-    id: "termite-protection",
-    title: "Termite & Timber Protection",
-    category: "Nuisance & Specialty",
-    shortDesc:
-      "Radar thermal scanning, liquid soil barriers, and subterranean baiting to safeguard property foundations.",
-  },
+
 ] as const;
 
 export type ServiceCatalogItem = (typeof SERVICE_CATALOG)[number];
