@@ -114,7 +114,7 @@ export default function Reviews() {
   return (
     <section className="py-section px-page">
       <div className="mx-auto max-w-content">
-        <div className="mx-auto max-w-[38ch] text-center">
+        <div className="mx-auto max-w-[38ch\] text-center">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.09em] text-brand-purple-strong">
             <span className="h-2 w-2 rounded-pill bg-brand-red" aria-hidden="true" />
             Customer Reviews

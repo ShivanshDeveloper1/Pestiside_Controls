@@ -41,7 +41,7 @@ Ub4 8JG</span>
             </div>
             <div className="mt-3 flex items-start gap-2.5 text-sm text-slate-300">
               <Building2 className="mt-0.5 size-4 shrink-0 text-violet-300" aria-hidden="true" />
-              <span>Residential and commercial enquiries welcome.</span>
+              <span>+447424273808</span>
             </div>
           </div>
 
