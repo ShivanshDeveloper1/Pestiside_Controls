@@ -7,7 +7,7 @@ export const SERVICE_DETAILS = {
     imageAlt: "Brown rat inspection and wildlife management target",
     fullDesc:
       "Rats cause structural damage and pose serious health hazards through gnawing and contamination. Our dual-phase program uses strategic smart-baiting coupled with heavy-duty structural proofing (steel mesh & industrial sealant) to guarantee total eradication.",
-    priceRange: "$180 - $350",
+   
     avgPrice: 245,
     responseTime: "< 2 Hours",
     ecoRating: "92% Eco-Balanced",
@@ -29,7 +29,7 @@ export const SERVICE_DETAILS = {
     imageAlt: "Field mouse trapped safely in eco-friendly environment",
     fullDesc:
       "Mice breed exponentially and contaminate food surfaces. We deploy non-toxic, eco-friendly trapping technology paired with precision copper mesh sealing to eliminate nesting grounds without toxic airborne fumes.",
-    priceRange: "$150 - $280",
+   
     avgPrice: 195,
     responseTime: "Same-Day",
     ecoRating: "98% Botanical & Safe",
@@ -51,7 +51,7 @@ export const SERVICE_DETAILS = {
     imageAlt: "Close up of insect treatment application surface",
     fullDesc:
       "German and American cockroaches carry pathogens and thrive in hard-to-reach crevices. Our deep gel baiting incorporates Insect Growth Regulators (IGRs) that destroy eggs and stop breeding cycles permanently.",
-    priceRange: "$160 - $320",
+   
     avgPrice: 220,
     responseTime: "< 4 Hours",
     ecoRating: "88% Targeted Micro-Gel",
@@ -73,7 +73,7 @@ export const SERVICE_DETAILS = {
     imageAlt: "Clean mattress and sanitized bedroom interior",
     fullDesc:
       "Bed bugs are immune to standard over-the-counter sprays. Our eco-thermal heating technology penetrates walls, mattresses, and floorboards up to 135°F to eliminate bugs and hidden eggs in a single 6-hour visit.",
-    priceRange: "$290 - $650",
+    
     avgPrice: 450,
     responseTime: "24-Hour Dispatch",
     ecoRating: "100% Chemical-Free Heat",
@@ -95,7 +95,7 @@ export const SERVICE_DETAILS = {
     imageAlt: "Wasp close up near structural eave",
     fullDesc:
       "Aggressive wasps, hornets, and yellowjackets endanger families and guests. Our certified technicians equip high-reach telescoping dusters to neutralize nests instantly and spray anti-nesting repellents on soffits.",
-    priceRange: "$120 - $240",
+   
     avgPrice: 175,
     responseTime: "< 1 Hour Priority",
     ecoRating: "85% Instant Knockdown",
