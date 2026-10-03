@@ -188,6 +188,8 @@ export default function Hero() {
   const [submitted, setSubmitted] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
   const reduce = useReducedMotion() ?? false;
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{ type: "success" | "error"; msg: string } | null>(null);
 
   // Cursor spotlight that trails the mouse across the hero
   const mx = useMotionValue(360);
@@ -203,29 +205,41 @@ export default function Hero() {
     my.set(event.clientY - rect.top);
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus(null);
 
-    const phoneInput = event.currentTarget.querySelector<HTMLInputElement>(
-      "#enquiry-phone",
-    );
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      name: formData.get("name"),
+      phone: formData.get("phone"),
+      postcode: formData.get("postcode"),
+      email: formData.get("email"),
+      service: formData.get("service") || selected,
+    };
 
-    if (!phoneInput) {
-      throw new Error("The enquiry form is missing its phone number field.");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus({ type: "success", msg: "Enquiry submitted successfully!" });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setStatus({ type: "error", msg: data.message || "Something went wrong." });
+      }
+    } catch (error) {
+      setStatus({ type: "error", msg: "Network error. Please try again." });
+    } finally {
+      setLoading(false);
     }
-
-    phoneInput.setCustomValidity(
-      phoneInput.value.replace(/\D/g, "").length >= 7
-        ? ""
-        : "Enter a phone number with at least 7 digits.",
-    );
-
-    if (!event.currentTarget.reportValidity()) {
-      return;
-    }
-
-    setSubmitted(true);
-  }
+  };
 
   return (
     <MotionConfig reducedMotion="user">
@@ -525,87 +539,78 @@ export default function Hero() {
                         )}
                       </AnimatePresence>
 
-                      <form
-                        className="mt-5 grid gap-3.5 sm:grid-cols-2"
-                        onSubmit={handleSubmit}
-                        aria-describedby="form-disclaimer"
-                      >
-                        <input type="hidden" name="service" value={selected ?? ""} />
+                    <form className="mt-5 grid gap-3.5 sm:grid-cols-2" onSubmit={handleSubmit}>
+      <input type="hidden" name="service" value={selected ?? ""} />
 
-                        <motion.div variants={rise} className="home-hero__field">
-                          <label htmlFor="enquiry-name">Name</label>
-                          <input
-                            autoComplete="name"
-                            id="enquiry-name"
-                            name="name"
-                            type="text"
-                            placeholder="Your name"
-                            required
-                            minLength={2}
-                          />
-                        </motion.div>
+      <div className="home-hero__field">
+        <label htmlFor="enquiry-name">Name</label>
+        <input
+          id="enquiry-name"
+          name="name"
+          type="text"
+          placeholder="Your name"
+          required
+          minLength={2}
+          className="w-full"
+        />
+      </div>
 
-                        <motion.div variants={rise} className="home-hero__field">
-                          <label htmlFor="enquiry-phone">Phone number</label>
-                          <input
-                            autoComplete="tel"
-                            id="enquiry-phone"
-                            name="phone"
-                            type="tel"
-                            inputMode="tel"
-                            placeholder="e.g. 020 1234 5678"
-                            required
-                            onChange={(event) => event.currentTarget.setCustomValidity("")}
-                          />
-                        </motion.div>
+      <div className="home-hero__field">
+        <label htmlFor="enquiry-phone">Phone number</label>
+        <input
+          id="enquiry-phone"
+          name="phone"
+          type="tel"
+          placeholder="e.g. 020 1234 5678"
+          required
+          className="w-full"
+        />
+      </div>
 
-                        <motion.div variants={rise} className="home-hero__field">
-                          <label htmlFor="enquiry-postcode">Postcode</label>
-                          <input
-                            autoComplete="postal-code"
-                            id="enquiry-postcode"
-                            name="postcode"
-                            type="text"
-                            placeholder="e.g. SW1A 1AA"
-                            minLength={5}
-                            maxLength={8}
-                            pattern="[A-Za-z0-9 ]{5,8}"
-                            required
-                          />
-                        </motion.div>
+      <div className="home-hero__field">
+        <label htmlFor="enquiry-postcode">Postcode</label>
+        <input
+          id="enquiry-postcode"
+          name="postcode"
+          type="text"
+          placeholder="e.g. UB4 8JG"
+          required
+          minLength={5}
+          maxLength={8}
+          className="w-full"
+        />
+      </div>
 
-                        <motion.div variants={rise} className="home-hero__field">
-                          <label htmlFor="enquiry-email">Email</label>
-                          <input
-                            autoComplete="email"
-                            id="enquiry-email"
-                            name="email"
-                            type="email"
-                            placeholder="you@example.com"
-                            required
-                          />
-                        </motion.div>
+      <div className="home-hero__field">
+        <label htmlFor="enquiry-email">Email</label>
+        <input
+          id="enquiry-email"
+          name="email"
+          type="email"
+          placeholder="you@example.com"
+          required
+          className="w-full"
+        />
+      </div>
 
-                        <motion.button
-                          variants={rise}
-                          type="submit"
-                          whileHover={{ y: -1 }}
-                          whileTap={{ scale: 0.98 }}
-                          className="group mt-1 inline-flex min-h-13 w-full cursor-pointer items-center justify-center gap-2.5 rounded-md bg-brand-red text-[0.9375rem] font-bold text-text-inverse shadow-[0_10px_24px_rgb(225_29_72/0.28)] transition-colors hover:bg-brand-red-hover sm:col-span-2"
-                        >
-                          Check my details
-                          <Arrow />
-                        </motion.button>
+      <button
+        type="submit"
+        disabled={loading}
+        className="group mt-1 inline-flex min-h-13 w-full cursor-pointer items-center justify-center gap-2.5 rounded-md bg-brand-red text-[0.9375rem] font-bold text-text-inverse shadow-[0_10px_24px_rgb(225_29_72/0.28)] transition-colors hover:bg-brand-red-hover disabled:opacity-50 sm:col-span-2"
+      >
+        {loading ? "Sending..." : "Check my details"}
+      </button>
 
-                        <motion.p
-                          variants={rise}
-                          id="form-disclaimer"
-                          className="text-center text-[0.7rem] leading-normal text-text-secondary sm:col-span-2"
-                        >
-                          Demo only: details are validated in your browser and
-                          aren’t sent anywhere.
-                        </motion.p>
-                      </form>
+      {status && (
+        <p
+          className={`text-center text-xs sm:col-span-2 ${
+            status.type === "success" ? "text-green-600 font-semibold" : "text-red-500"
+          }`}
+        >
+          {status.msg}
+        </p>
+      )}
+    </form>
                     </motion.div>
                   )}
                 </AnimatePresence>

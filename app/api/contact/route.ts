@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
@@ -11,86 +13,98 @@ export async function POST(request: Request) {
       phone,
       postcode,
       propertyType,
+      service,
       message,
     } = body;
 
-    if (!name || !email || !message) {
+    // Validation (Email aur Name zaroori hain)
+    if (!name || !email) {
       return NextResponse.json(
         {
           success: false,
-          message: "Please complete the required fields.",
+          message: "Please fill in all required fields (Name and Email).",
         },
         { status: 400 }
       );
     }
 
-    const gmailUser = process.env.GMAIL_USER;
-    const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
+    const toEmail = process.env.TO_EMAIL || "speedopestcontrol1@gmail.com";
+    const fromEmail =
+      process.env.FROM_EMAIL || "Speedy Pest Control <onboarding@resend.dev>";
 
-    if (!gmailUser || !gmailAppPassword) {
-      console.error("Missing Gmail environment variables.");
-
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Email service is not configured.",
-        },
-        { status: 500 }
-      );
-    }
-
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: gmailUser,
-        pass: gmailAppPassword,
-      },
-    });
-
-    await transporter.sendMail({
-      from: `"Speedy Pest Control Website" <${gmailUser}>`,
-      to: "speedopestcontrol1@gmail.com",
-      replyTo: email,
-      subject: `New Pest Control Enquiry${name ? ` - ${name}` : ""}`,
+    // Resend email sending
+    const { data, error } = await resend.emails.send({
+      from: fromEmail,
+      to: [toEmail],
+      replyTo: email, // Jab aap email ka Reply dabaoge, direct client ko mail jayegi
+      subject: `New Pest Control Enquiry - ${name}${
+        service ? ` (${service})` : ""
+      }`,
       text: `
-New enquiry from Speedy Pest Control website
+New Enquiry Received:
 
 Name: ${name}
 Email: ${email}
 Phone: ${phone || "Not provided"}
 Postcode: ${postcode || "Not provided"}
 Property Type: ${propertyType || "Not provided"}
+Selected Service: ${service || "Not specified"}
 
 Message:
-${message}
+${message || "No additional message provided."}
       `.trim(),
       html: `
-        <h2>New Pest Control Enquiry</h2>
-
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Phone:</strong> ${escapeHtml(phone || "Not provided")}</p>
-        <p><strong>Postcode:</strong> ${escapeHtml(postcode || "Not provided")}</p>
-        <p><strong>Property Type:</strong> ${escapeHtml(
-          propertyType || "Not provided"
-        )}</p>
-
-        <h3>Message</h3>
-        <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
+        <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
+          <h2 style="color: #e11d48; border-bottom: 2px solid #e11d48; padding-bottom: 8px;">
+            New Pest Control Enquiry
+          </h2>
+          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+          <p><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
+          <p><strong>Phone:</strong> ${escapeHtml(phone || "Not provided")}</p>
+          <p><strong>Postcode:</strong> ${escapeHtml(postcode || "Not provided")}</p>
+          ${
+            propertyType
+              ? `<p><strong>Property Type:</strong> ${escapeHtml(propertyType)}</p>`
+              : ""
+          }
+          ${
+            service
+              ? `<p><strong>Selected Service:</strong> ${escapeHtml(service)}</p>`
+              : ""
+          }
+          ${
+            message
+              ? `
+                <h3 style="margin-top: 20px;">Message:</h3>
+                <p style="background: #f4f4f5; padding: 12px; border-radius: 8px;">
+                  ${escapeHtml(message).replace(/\n/g, "<br />")}
+                </p>
+              `
+              : ""
+          }
+        </div>
       `,
     });
 
+    if (error) {
+      console.error("Resend API Error:", error);
+      return NextResponse.json(
+        { success: false, message: error.message },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json({
       success: true,
-      message: "Your enquiry has been sent successfully.",
+      message: "Your enquiry has been sent successfully!",
+      id: data?.id,
     });
   } catch (error) {
-    console.error("Contact form email error:", error);
-
+    console.error("Contact Form Server Error:", error);
     return NextResponse.json(
       {
         success: false,
-        message: "We could not send your enquiry. Please try again.",
+        message: "Something went wrong while sending your enquiry.",
       },
       { status: 500 }
     );
@@ -98,6 +112,7 @@ ${message}
 }
 
 function escapeHtml(value: string) {
+  if (!value) return "";
   return value
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")

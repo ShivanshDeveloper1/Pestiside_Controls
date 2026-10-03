@@ -36,7 +36,8 @@ export default function Footer() {
             </p>
             <div className="mt-5 flex items-start gap-2.5 text-sm text-slate-300">
               <MapPin className="mt-0.5 size-4 shrink-0 text-violet-300" aria-hidden="true" />
-              <span>London and nearby areas — ask us to confirm coverage.</span>
+              <span> 1300 Uxbridge Road hayes 
+Ub4 8JG</span>
             </div>
             <div className="mt-3 flex items-start gap-2.5 text-sm text-slate-300">
               <Building2 className="mt-0.5 size-4 shrink-0 text-violet-300" aria-hidden="true" />
@@ -64,7 +65,7 @@ export default function Footer() {
               href="/quote"
               className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand-red px-4 text-sm font-bold text-white transition hover:bg-brand-red-hover"
             >
-              Get a free quote
+               Contact Us
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </nav>

@@ -161,7 +161,7 @@ export default function Navbar() {
             onClick={handleNavClick}
             className="hidden shrink-0 transform rounded-full bg-rose-600 px-7 py-3 text-sm font-bold text-white shadow-md shadow-rose-500/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-rose-700 hover:shadow-lg hover:shadow-rose-500/40 lg:inline-flex lg:items-center"
           >
-            Get a Free Quote
+           Contact Us
           </Link>
 
           {/* Mobile menu trigger */}
@@ -244,7 +244,7 @@ export default function Navbar() {
                   onClick={handleNavClick}
                   className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-rose-600 px-6 py-4 text-lg font-bold text-white shadow-lg shadow-rose-500/25 transition-all duration-300 hover:bg-rose-700 hover:shadow-xl hover:shadow-rose-500/40 active:scale-[0.98]"
                 >
-                  Get a Free Quote
+                 Contact Us
                   <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.5} />
                 </Link>
 

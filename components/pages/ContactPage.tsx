@@ -6,7 +6,7 @@ import { ArrowRight, Building2, Mail, MapPin, PhoneCall } from "lucide-react";
 import EnquiryForm from "@/components/pages/EnquiryForm";
 import Reveal from "@/components/pages/Reveal";
 
-const BUSINESS_PHONE = "+447440674042";
+const BUSINESS_PHONE = "+447424273808";
 const BUSINESS_EMAIL = "speedopestcontrol1@gmail.com";
 
 export default function ContactPage() {
@@ -49,7 +49,7 @@ export default function ContactPage() {
                 </span>
 
                 <h2 className="mt-5 font-display text-xl font-bold text-brand-navy">
-                  London service area
+                 1300 Uxbridge Road hayes Ub4 8JG
                 </h2>
 
                 <p className="mt-2 text-sm leading-relaxed text-text-secondary">
