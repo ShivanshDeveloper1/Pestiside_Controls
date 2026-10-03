@@ -70,7 +70,7 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-              Speedy Pest Control helps London households and businesses deal
+              Speedo Pest Control helps London households and businesses deal
               with pest concerns through a professional, considered approach —
               from understanding the problem to practical prevention advice.
             </p>
@@ -143,7 +143,7 @@ export default function AboutPage() {
           <Reveal>
             <div className="space-y-5 text-base leading-8 text-text-secondary">
               <p>
-                Speedy Pest Control provides pest-control services for
+                Speedo Pest Control provides pest-control services for
                 residential and commercial customers across London. Every
                 property and pest concern is different, so good service starts
                 with listening and a careful assessment.

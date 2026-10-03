@@ -126,12 +126,12 @@ export default function Navbar() {
           <Link
             href="/"
             onClick={handleNavClick}
-            aria-label="Speedy Pest Control — home"
+            aria-label="Speedo Pest Control — home"
             className="group flex items-center rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
           >
             <img
               src="/logo.jpeg"
-              alt="Speedy Pest Control"
+              alt="Speedo Pest Control"
               className="h-10 w-auto max-w-[180px] object-contain transition-transform duration-300 group-hover:scale-105 sm:h-12"
             />
           </Link>
@@ -205,7 +205,7 @@ export default function Navbar() {
             >
               <div className="flex items-center justify-between">
                 <span className="font-display text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                  Speedy<span className="text-rose-600">Pest</span>
+                  Speedo<span className="text-rose-600">Pest</span>
                 </span>
                 <button
                   ref={closeButtonRef}

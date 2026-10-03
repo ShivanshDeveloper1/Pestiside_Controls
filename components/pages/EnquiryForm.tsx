@@ -66,7 +66,7 @@ export default function EnquiryForm({ mode }: EnquiryFormProps) {
             </h2>
             <p className="mt-3 max-w-lg leading-relaxed text-text-secondary">
               This website demo does not send or store form submissions. No
-              details have been delivered to Speedy Pest Control.
+              details have been delivered to Speedo Pest Control.
             </p>
             <button
               type="button"

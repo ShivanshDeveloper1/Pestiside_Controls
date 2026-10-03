@@ -21,7 +21,7 @@ export default function ContactPage() {
         <div className="relative mx-auto max-w-content">
           <p className="inline-flex items-center gap-2 rounded-pill border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.13em] text-violet-200">
             <MapPin className="size-4 text-brand-red" aria-hidden="true" />
-            Speedy Pest Control · London
+            Speedo Pest Control · London
           </p>
 
           <h1 className="mt-6 max-w-3xl font-display text-[clamp(2.5rem,7vw,4.75rem)] font-bold leading-[1.05] tracking-[-0.05em]">
@@ -73,7 +73,7 @@ export default function ContactPage() {
                   href={`tel:${BUSINESS_PHONE}`}
                   className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl bg-brand-red px-4 font-bold text-white transition hover:bg-brand-red-hover"
                 >
-                  Call Speedy Pest Control
+                  Call Speedo Pest Control
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </a>
 
@@ -94,7 +94,7 @@ export default function ContactPage() {
                 </h2>
 
                 <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                  Prefer email? You can contact Speedy Pest Control directly.
+                  Prefer email? You can contact Speedo Pest Control directly.
                 </p>
 
                 <a

@@ -15,7 +15,7 @@ export default function LegalPage({ title, intro, sections }: LegalPageProps) {
         <div className="mx-auto max-w-content">
           <p className="inline-flex items-center gap-2 rounded-pill border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.13em] text-violet-200">
             <FileText className="size-4 text-brand-red" aria-hidden="true" />
-            Speedy Pest Control
+            Speedo Pest Control
           </p>
           <h1 className="mt-6 font-display text-[clamp(2.4rem,6vw,4.25rem)] font-bold leading-tight tracking-[-0.05em]">
             {title}

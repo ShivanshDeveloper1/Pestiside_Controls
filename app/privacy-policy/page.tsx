@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/pages/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Speedy Pest Control",
-  description: "Privacy policy placeholder for Speedy Pest Control.",
+  title: "Privacy Policy | Speedo Pest Control",
+  description: "Privacy policy placeholder for Speedo Pest Control.",
 };
 
 export default function Page() {
   return (
     <LegalPage
       title="Privacy policy"
-      intro="Information about how personal information is handled when you visit or contact Speedy Pest Control."
+      intro="Information about how personal information is handled when you visit or contact Speedo Pest Control."
       sections={[
         {
           heading: "Information and enquiries",

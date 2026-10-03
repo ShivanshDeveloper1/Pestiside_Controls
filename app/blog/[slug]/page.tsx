@@ -14,10 +14,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const article = getArticle(slug);
-  if (!article) return { title: "Article not found | Speedy Pest Control" };
+  if (!article) return { title: "Article not found | Speedo Pest Control" };
 
   return {
-    title: `${article.title} | Speedy Pest Control`,
+    title: `${article.title} | Speedo Pest Control`,
     description: article.description,
   };
 }

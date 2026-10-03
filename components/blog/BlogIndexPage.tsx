@@ -50,7 +50,7 @@ export default function BlogIndexPage() {
         >
           <p className="inline-flex items-center gap-2 rounded-pill border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.13em] text-violet-200">
             <BookOpen className="size-4 text-brand-red" aria-hidden="true" />
-            The Speedy Pest Control blog
+            The Speedo Pest Control blog
           </p>
           <h1 className="mt-6 max-w-3xl font-display text-[clamp(2.5rem,7vw,4.75rem)] font-bold leading-[1.05] tracking-[-0.05em]">
             Helpful guidance for a more pest-aware property.

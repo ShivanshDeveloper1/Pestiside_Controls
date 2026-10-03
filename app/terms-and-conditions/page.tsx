@@ -2,19 +2,19 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/pages/LegalPage";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Speedy Pest Control",
-  description: "Terms and conditions placeholder for Speedy Pest Control.",
+  title: "Terms & Conditions | Speedo Pest Control",
+  description: "Terms and conditions placeholder for Speedo Pest Control.",
 };
 
 export default function Page() {
   return (
     <LegalPage
       title="Terms & conditions"
-      intro="General information about using the Speedy Pest Control website."
+      intro="General information about using the Speedo Pest Control website."
       sections={[
         {
           heading: "Website information",
-          text: "Website content is provided for general information. Service availability, treatment suitability and any commercial arrangements should be confirmed directly with Speedy Pest Control.",
+          text: "Website content is provided for general information. Service availability, treatment suitability and any commercial arrangements should be confirmed directly with Speedo Pest Control.",
         },
         {
           heading: "Quotes and service arrangements",

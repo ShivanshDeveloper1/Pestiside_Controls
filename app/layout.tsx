@@ -23,7 +23,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Speedy Pest Control | London",
+  title: "Speedo Pest Control | London",
   description:
     "Professional pest control for homes and businesses in London.",
 };

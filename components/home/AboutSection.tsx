@@ -19,7 +19,7 @@ import { BadgeCheck, Building2, Leaf, ShieldCheck, Wrench } from "lucide-react";
 // the hotspots land on the right parts of the building.
 const ABOUT_IMAGE = {
   src: "https://plus.unsplash.com/premium_photo-1661306479139-2ba81f1a5cd6?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  alt: "Residential property protected by Speedy Pest Control",
+  alt: "Residential property protected by Speedo Pest Control",
 };
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -216,7 +216,7 @@ export default function AboutSection() {
               )}
               <span className="relative inline-flex h-2.5 w-2.5 rounded-pill bg-brand-red" />
             </span>
-            About Speedy Pest Control
+            About Speedo Pest Control
           </motion.span>
 
           <h2 className="mt-6 font-display text-heading-xl font-bold leading-[1.02] tracking-[-0.035em] text-brand-navy">
@@ -230,7 +230,7 @@ export default function AboutSection() {
             variants={fadeUp}
             className="mt-6 max-w-[48ch] text-base leading-relaxed text-text-secondary"
           >
-            Speedy Pest Control has spent the last 10 years clearing rats, mice,
+            Speedo Pest Control has spent the last 10 years clearing rats, mice,
             cockroaches, bed bugs and wasps from properties across the region.
             Every visit pairs modern, low-impact treatment with a plan to stop
             the problem coming back — whether it&apos;s a single kitchen or a

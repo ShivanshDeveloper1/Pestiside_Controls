@@ -28,7 +28,7 @@ export default function Footer() {
               <span className="grid size-10 place-items-center rounded-xl bg-brand-purple/20 text-violet-200">
                 <ShieldCheck className="size-5" aria-hidden="true" />
               </span>
-              Speedy Pest Control
+              Speedo Pest Control
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-slate-300">
               Professional pest-control services for homes and businesses.
@@ -91,7 +91,7 @@ Ub4 8JG</span>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} Speedy Pest Control. All rights
+            © {new Date().getFullYear()} Speedo Pest Control. All rights
             reserved.
           </p>
           <nav aria-label="Legal">

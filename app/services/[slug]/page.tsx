@@ -17,10 +17,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const service = getService(slug);
-  if (!service) return { title: "Service not found | Speedy Pest Control" };
+  if (!service) return { title: "Service not found | Speedo Pest Control" };
 
   return {
-    title: `${service.title} | Speedy Pest Control London`,
+    title: `${service.title} | Speedo Pest Control London`,
     description: service.shortDesc,
   };
 }

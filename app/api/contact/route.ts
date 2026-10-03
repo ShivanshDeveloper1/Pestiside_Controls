@@ -30,7 +30,7 @@ export async function POST(request: Request) {
 
     const toEmail = process.env.TO_EMAIL || "speedopestcontrol1@gmail.com";
     const fromEmail =
-      process.env.FROM_EMAIL || "Speedy Pest Control <onboarding@resend.dev>";
+      process.env.FROM_EMAIL || "Speedo Pest Control <onboarding@resend.dev>";
 
     // Resend email sending
     const { data, error } = await resend.emails.send({
