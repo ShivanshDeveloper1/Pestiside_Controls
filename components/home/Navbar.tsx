@@ -130,7 +130,7 @@ export default function Navbar() {
             className="group flex items-center rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
           >
             <img
-              src="/logo.jpeg"
+              src="/logo.jpg"
               alt="Speedo Pest Control"
               className="h-10 w-auto max-w-[180px] object-contain transition-transform duration-300 group-hover:scale-105 sm:h-12"
             />
