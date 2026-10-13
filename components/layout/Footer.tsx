@@ -94,6 +94,18 @@ Ub4 8JG</span>
             © {new Date().getFullYear()} Speedo Pest Control. All rights
             reserved.
           </p>
+          <p>
+  Website developed by
+  <a
+    href="https://webcontractor.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="transition hover:text-white ml-2"
+    aria-label="Website developed by Shivansh Singh, web developer"
+  >
+    Shivansh Singh
+  </a>
+</p>
           <nav aria-label="Legal">
             <ul className="flex flex-wrap gap-x-5 gap-y-2">
               <li>
